@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /* Estilos para drag and drop */
-[draggable='true'] {
+[draggable="true"] {
   cursor: grab;
 }
 
-[draggable='true']:active {
+[draggable="true"]:active {
   cursor: grabbing;
 }
 
@@ -72,3 +72,4 @@
 .context-menu-item:hover {
   background-color: #f7fafc;
 }
+

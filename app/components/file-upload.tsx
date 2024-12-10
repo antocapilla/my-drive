@@ -1,44 +1,44 @@
-'use client';
+"use client"
 
-import { useState, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Upload } from 'lucide-react';
-import { useDrive } from '../context/drive-context';
-import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'react-hot-toast';
+import { useState, useRef } from 'react'
+import { Button } from "@/components/ui/button"
+import { Upload } from 'lucide-react'
+import { useDrive } from '../context/drive-context'
+import { motion, AnimatePresence } from 'framer-motion'
+import { toast } from 'react-hot-toast'
 
 export default function FileUpload() {
-  const { addFile } = useDrive();
-  const [isDragging, setIsDragging] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { addFile } = useDrive()
+  const [isDragging, setIsDragging] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
+    e.preventDefault()
+    setIsDragging(true)
+  }
 
   const handleDragLeave = () => {
-    setIsDragging(false);
-  };
+    setIsDragging(false)
+  }
 
   const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
+    e.preventDefault()
+    setIsDragging(false)
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFileUpload(e.dataTransfer.files[0]);
+      handleFileUpload(e.dataTransfer.files[0])
     }
-  };
+  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      handleFileUpload(e.target.files[0]);
+      handleFileUpload(e.target.files[0])
     }
-  };
+  }
 
   const handleFileUpload = (file: File) => {
-    addFile(file);
-    toast.success(`File "${file.name}" uploaded successfully!`);
-  };
+    addFile(file)
+    toast.success(`File "${file.name}" uploaded successfully!`)
+  }
 
   return (
     <>
@@ -78,5 +78,6 @@ export default function FileUpload() {
         </Button>
       </div>
     </>
-  );
+  )
 }
+
